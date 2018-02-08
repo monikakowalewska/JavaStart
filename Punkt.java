@@ -17,13 +17,6 @@ public class Punkt
 			x= wspX;
 			y= wspY;
 		}
-Punkt pobierzWspolrzedne()
-{
-	Punkt punkt = new Punkt();
-	punkt.x = x;
-	punkt.y=y;
-	return punkt;
-		}
 
 void pokazWspolrzedne()
 {

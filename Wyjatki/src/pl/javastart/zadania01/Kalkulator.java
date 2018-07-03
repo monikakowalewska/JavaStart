@@ -88,9 +88,9 @@ public class Kalkulator {
 		String operator;
 		/* odczyt.nextLine(); */
 		operator = odczyt.nextLine();
-		if (operator != "+" && operator != "-" && operator != "*" && operator != "/") {
+		/*if (  !((operator != "+") && (operator != "-") && (operator != "*") && (operator != "/")))  {
 			throw new UnkownOperatorException("Nie ma takiego operatora");
-		} else {
+		} else {*/
 			switch (operator) {
 			case "+": {
 				System.out.println("Suma tych liczb to " + add());
@@ -111,11 +111,12 @@ public class Kalkulator {
 				break;
 
 			default:
+				throw new UnkownOperatorException("Wykorzystujesz niezdefiniowany operator arytmetyczny");
 
-				System.out.println("nieprzewidziana sytuacja");
+				/*System.out.println("nieprzewidziana sytuacja");*/
 			}
 		}
-	}
+	/*}*/
 
 	public double add() {
 		return liczba1 + liczba2;

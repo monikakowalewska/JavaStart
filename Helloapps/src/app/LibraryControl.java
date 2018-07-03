@@ -1,9 +1,13 @@
 package app;
 
+import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
+
 import data.Book;
-import data.Magazine;
 import data.Library;
+import data.Magazine;
 import utils.DataReader;
+import utils.LibraryUtils;
 
 public class LibraryControl {
 
@@ -22,9 +26,11 @@ public class LibraryControl {
 	 * G³ówna pêtla programu, która pozwala na wybór opcji i interakcjê
 	 */
 	public void controlLoop() {
-		Option option;
-		printOptions();
-		while ((option =Option.createFromInt(dataReader.getInt())) !=Option.EXIT) {
+		Option option = null;
+        while (option != Option.EXIT) {
+            try {
+            	printOptions();
+		option=Option.createFromInt(dataReader.getInt());
 			switch (option) {
 			case ADD_BOOK:
 				addBook();
@@ -41,10 +47,15 @@ public class LibraryControl {
 				break;
 			case EXIT:
         		;
-
 			}
-			printOptions();
-		}
+			}
+		catch (InputMismatchException e) {
+            System.out.println("Wprowadzono niepoprawne dane, publikacji nie dodano");
+        } catch (NumberFormatException | NoSuchElementException e) {
+            System.out.println("Wybrana opcja nie istnieje, wybierz ponownie:");
+        }
+    }
+
 		// zamykamy strumieñ wejœcia
 		dataReader.close();
 	}
@@ -64,7 +75,7 @@ public class LibraryControl {
 	}
 
 	private void printBooks() {
-		library.printBooks();
+		LibraryUtils.printBooks(library);
 	}
 
 	private void addMagazine() {
@@ -73,7 +84,7 @@ public class LibraryControl {
 	}
 
 	private void printMagazines() {
-		library.printMagazines();
+		LibraryUtils.printMagazines(library);
 	}
 
 }

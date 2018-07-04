@@ -53,6 +53,9 @@ public class Rectangle implements Shape{
 		setB(b);
 		
 		error = false;
+		if(a<=0||b<=0){
+			throw new ArithmeticException("Bok powienien byæ d³u¿szy od 0");
+		}
 		}
 		catch(InputMismatchException e){
 			System.out.println("Podaj liczbê z przecinkiem z œrodku! Skup siê! Gdzie jest przecinek?");

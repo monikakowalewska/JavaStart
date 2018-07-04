@@ -65,6 +65,13 @@ public class Triangle implements Shape {
 		// TODO Auto-generated method stub
 		return a+b+c;
 	}
+	
+	public boolean czyTrojkat(){
+		if(a+b<=c||a+c<=b||b+c<=a){
+			System.out.println("To nie jest trójk¹t");;
+		}
+		return false;
+	}
 	public void pobierzDane(){
 		Scanner odczyt=new Scanner(System.in);
 		
@@ -81,10 +88,17 @@ public class Triangle implements Shape {
 		System.out.println("Podaj trzeci¹ liczbê (z przecinkiem  w œrodku) jako trzeci bok");
 		c=odczyt.nextDouble();
 		setC(c);
+		czyTrojkat();
 		System.out.println("Podaj czwart¹ liczbê (z przecinkiem  w œrodku) jako wysokoœæ");
 		h=odczyt.nextDouble();
 		setH(h);
 		error = false;
+		if(a<=0||b<=0||c<=0||h<=0){
+			throw new ArithmeticException("Boki i wysokoœæ trójk¹ta powinny byæ d³u¿sze od 0");
+		}
+		if(a+b<=c&&a+c<=b&&b+c<=a){
+			System.out.println("To nie jest trójk¹t");;
+		}
 		}
 		catch(InputMismatchException e){
 			System.out.println("Podaj liczbê z przecinkiem z œrodku! Skup siê! Gdzie jest przecinek?");

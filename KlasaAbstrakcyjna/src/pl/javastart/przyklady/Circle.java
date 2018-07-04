@@ -32,7 +32,7 @@ public class Circle implements Shape {
 		// TODO Auto-generated method stub
 		return 2* Shape.PI * r;
 	}
-public void pobierzDane(){
+public void pobierzDane()throws ArithmeticException{
 	Scanner odczyt=new Scanner(System.in);
 	System.out.println("Wykonajmy dzia³ania na kole. Podaj d³ugoœæ promienia (z przecinkiem z œrodku)");
 	boolean error = true;
@@ -42,6 +42,9 @@ public void pobierzDane(){
 	setR(r);
 	
 	error = false;
+	if(r<=0){
+		throw new ArithmeticException("D³ugoœæ promienia musi byæ wiêksza od 0");
+	}
 	}
 	catch(InputMismatchException e){
 		System.out.println("Podaj liczbê z przecinkiem z œrodku! Skup siê! Gdzie jest przecinek?");
@@ -54,3 +57,4 @@ public void pobierzDane(){
 	/*odczyt.close();*/
 }
 }
+

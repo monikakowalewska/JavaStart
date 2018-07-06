@@ -4,13 +4,13 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import pl.javastart.przyklady.Shape;
+import java.lang.Math;
 
 public class Triangle implements Shape {
 
 	private double a;
 	private double b;
 	private double c;
-	private double h;
 	
 	
 	public double getA() {
@@ -37,27 +37,17 @@ public class Triangle implements Shape {
 		this.c = c;
 	}
 
-	public double getH() {
-		return h;
-	}
-
-	public void setH(double h) {
-		this.h = h;
-	}
 	public Triangle(){}
 	public Triangle(double a, double b, double c){
 		setA(a);
 		setB(b);
 		setC(c);
 	}
-	public Triangle(double a, double h){
-		setA(a);
-		setH(h);
-	}
+
 	@Override
 	public double calculateArea() {
 		// TODO Auto-generated method stub
-		return 0.5*a*h;
+				return Math.sqrt((a+b+c)*(a+b-c)*(a-b+c)*(-a+b+c))/4;
 	}
 
 	@Override
@@ -67,10 +57,11 @@ public class Triangle implements Shape {
 	}
 	
 	public boolean czyTrojkat(){
-		if(a+b<=c||a+c<=b||b+c<=a){
-			System.out.println("To nie jest trójk¹t");;
-		}
-		return false;
+		double p=0.5*(a+b+c);
+		
+		if(Math.sqrt(p*(p-a)*(p-b)*(p-c))<=0);
+		System.out.println("To nie jest trójkat");
+		return false ;
 	}
 	public void pobierzDane(){
 		Scanner odczyt=new Scanner(System.in);
@@ -89,15 +80,13 @@ public class Triangle implements Shape {
 		c=odczyt.nextDouble();
 		setC(c);
 		czyTrojkat();
-		System.out.println("Podaj czwart¹ liczbê (z przecinkiem  w œrodku) jako wysokoœæ");
-		h=odczyt.nextDouble();
-		setH(h);
-		error = false;
-		if(a<=0||b<=0||c<=0||h<=0){
-			throw new ArithmeticException("Boki i wysokoœæ trójk¹ta powinny byæ d³u¿sze od 0");
+		while(czyTrojkat()==false){
+			System.out.println("To nie jest trójk¹t. Podaj inne liczby.");
+			error=true;
 		}
-		if(a+b<=c&&a+c<=b&&b+c<=a){
-			System.out.println("To nie jest trójk¹t");;
+		error = false;
+		if(a<=0||b<=0||c<=0){
+			throw new ArithmeticException("Boki i wysokoœæ trójk¹ta powinny byæ d³u¿sze od 0");
 		}
 		}
 		catch(InputMismatchException e){

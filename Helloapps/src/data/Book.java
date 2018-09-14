@@ -1,6 +1,11 @@
 package data;
 import data.Publication;
 public class Book extends Publication{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 223407835749243954L;
 	// Pola
     private String author;
     private int releaseDate;

@@ -39,7 +39,6 @@ public void add(Person p)  {
 }
 
 public void remove(Person p){
-	/*Arrays.sort(person);*/
 	for(int i=0;i<personNumber;i++){
 		if(p.equals(person[i])){
 			Person[] person2 = new Person[person.length];
@@ -54,7 +53,10 @@ public void remove(Person p){
 		};
 	}
 }
-public Person get(int i){
+public Person get(int i)throws ArrayIndexOutOfBoundsException {
+		if (i ==0 || i < 0) {
+			throw new ArrayIndexOutOfBoundsException("B³êdny parametr");
+		}
 	System.out.println("Obiekt na podanym indexie to "+person[i]);
 	return person[i];	
 }

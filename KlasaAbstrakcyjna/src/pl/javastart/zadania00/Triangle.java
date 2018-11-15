@@ -56,12 +56,16 @@ public class Triangle implements Shape {
 		return a+b+c;
 	}
 	
-	public boolean czyTrojkat(){
-		double p=0.5*(a+b+c);
-		
-		if(Math.sqrt(p*(p-a)*(p-b)*(p-c))<=0);
-		System.out.println("To nie jest trójkat");
-		return false ;
+	public boolean czyTrojkat() {
+		double p = 0.5 * (a + b + c);
+
+		if ((p * (p - a) * (p - b) * (p - c)) <= 0) {
+			System.out.println("To nie jest trójkat");
+			return false;
+		} else {
+			return true;
+		}
+
 	}
 	public void pobierzDane(){
 		Scanner odczyt=new Scanner(System.in);
@@ -70,6 +74,7 @@ public class Triangle implements Shape {
 		boolean error = true;
 		while (error) {
 		try{
+		do {
 		System.out.println("Wykonajmy dzia³ania na trójk¹cie. Podaj liczbê (z przecinkiem z œrodku) jako pierwszy bok (podstawa)");
 		a=odczyt.nextDouble();
 		setA(a);
@@ -79,11 +84,9 @@ public class Triangle implements Shape {
 		System.out.println("Podaj trzeci¹ liczbê (z przecinkiem  w œrodku) jako trzeci bok");
 		c=odczyt.nextDouble();
 		setC(c);
-		czyTrojkat();
-		while(czyTrojkat()==false){
-			System.out.println("To nie jest trójk¹t. Podaj inne liczby.");
-			error=true;
-		}
+		}while(!czyTrojkat());
+
+
 		error = false;
 		if(a<=0||b<=0||c<=0){
 			throw new ArithmeticException("Boki i wysokoœæ trójk¹ta powinny byæ d³u¿sze od 0");

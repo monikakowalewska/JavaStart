@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 
 import data.Book;
 import data.Library;
+import data.LibraryUser;
 import data.Magazine;
 import utils.DataReader;
 import utils.FileManager;
@@ -57,6 +58,13 @@ public class LibraryControl {
 			case PRINT_MAGAZINES:
 				printMagazines();
 				break;
+			case ADD_USER:
+            	addUser();
+            	break;
+            case PRINT_USERS:
+            	printUsers();
+            	break;
+
 			case EXIT:
                  exit();
 
@@ -98,6 +106,15 @@ public class LibraryControl {
 	private void printMagazines() {
 		LibraryUtils.printMagazines(library);
 	}
+	 private void addUser() {
+	    	LibraryUser user = dataReader.readAndCreateLibraryUser();
+	    	library.addUser(user);
+	    }
+	 private void printUsers() {
+	    	LibraryUtils.printUsers(library);
+	    }
+	    
+	    
 	private void exit() {
     	fileManager.writeLibraryToFile(library);
     }
@@ -108,7 +125,9 @@ public class LibraryControl {
         ADD_BOOK(1, "Dodanie ksi¹¿ki"),
         ADD_MAGAZINE(2,"Dodanie magazynu/gazety"),
         PRINT_BOOKS(3, "Wyœwietlenie dostêpnych ksi¹¿ek"),
-        PRINT_MAGAZINES(4, "Wyœwietlenie dostêpnych magazynów/gazet");
+        PRINT_MAGAZINES(4, "Wyœwietlenie dostêpnych magazynów/gazet"),
+        ADD_USER(5, "Dodanie nowego u¿ytkownika"),
+        PRINT_USERS(6, "Wyœwietlenie listy u¿ytkowników");
      
         private int value;
         private String description;

@@ -1,88 +1,93 @@
 package data;
 
+import java.time.MonthDay;
+import java.util.Objects;
+
 public class Magazine extends Publication{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2061400934707882805L;
-	private int month;
-	private int day;
+	public static final String TYPE = "Magazyn";
+	private MonthDay monthDay;
 	private String language;
-	
-	public int getMonth() {
-		return month;
-	}
-	public void setMonth(int month) {
-		this.month = month;
-	}
-	public int getDay() {
-		return day;
-	}
-	public void setDay(int day) {
-		this.day = day;
-	}
+
+	public MonthDay getMonthDay() {
+
+        return monthDay;
+
+    }
+
+    public void setMonthDay(MonthDay monthDay) {
+
+        this.monthDay = monthDay;
+
+    }
+
 	public String getLanguage() {
 		return language;
 	}
+
 	public void setLanguage(String language) {
 		this.language = language;
 	}
 
 	public Magazine(String title, String publisher, String language, int year, int month, int day) {
-		setTitle(title);
-		setPublisher(publisher);
+		super(title, publisher,year);
 		setLanguage(language);
-		setYear(year);
-		setMonth(month);
-		setDay(day);
+		this.monthDay = MonthDay.of(month, day);
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder print = new StringBuilder(32);
-		print.append(getTitle());
-		print.append("; ");
-		print.append(getPublisher());
-		print.append("; ");
-		print.append(getYear());
-		print.append("; ");
-		print.append(getMonth());
-		print.append("; ");
-		print.append(getDay());
-		print.append("; ");
-		print.append(getLanguage());
-		return print.toString();
-	}
+	 @Override
+
+	    public String toCsv() {
+
+	        return (TYPE + ";") +
+
+	                getTitle() + ";" +
+
+	                getPublisher() + ";" +
+
+	                getYear() + ";" +
+
+	                monthDay.getMonthValue() + ";" +
+
+	                monthDay.getDayOfMonth() + ";" +
+
+	                language + "";
+
+	    }
+
+	
+
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + day;
-		result = prime * result + ((language == null) ? 0 : language.hashCode());
-		result = prime * result + month;
-		return result;
+		return Objects.hash(super.hashCode(), monthDay, language);
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		Magazine other = (Magazine) obj;
-		if (day != other.day)
-			return false;
 		if (language == null) {
 			if (other.language != null)
 				return false;
 		} else if (!language.equals(other.language))
 			return false;
-		if (month != other.month)
+		if (monthDay == null) {
+			if (other.monthDay != null)
+				return false;
+		} else if (!monthDay.equals(other.monthDay))
 			return false;
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return super.toString() + ", " + monthDay.getMonthValue() + ", " + monthDay.getDayOfMonth() + ", " + language;
+	}
+
+	
 
 }

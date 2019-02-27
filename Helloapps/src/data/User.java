@@ -2,8 +2,8 @@ package data;
 
 import java.io.Serializable;
 
-public class User implements Serializable{
-private static final long serialVersionUID = 3187078139801519107L;
+public abstract class User implements Serializable, CsvConvertible{
+
 	
 	private String firstName;
 	private String lastName;

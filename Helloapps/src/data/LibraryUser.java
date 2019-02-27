@@ -3,9 +3,9 @@ package data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class LibraryUser extends User{
-private static final long serialVersionUID = 1704976407311180890L;
 	
 	private List<Publication> publicationHistory;
 	private List<Publication> borrowedPublications;
@@ -23,7 +23,13 @@ private static final long serialVersionUID = 1704976407311180890L;
 		publicationHistory = new ArrayList<>();
 		borrowedPublications = new ArrayList<>();
 	}
+	 @Override
 
+	    public String toCsv() {
+
+	        return getFirstName() + ";" + getLastName() + ";" + getPesel();
+
+	    }
 	private void addPublicationToHistory(Publication pub) {
 		publicationHistory.add(pub);
 	}
@@ -42,36 +48,28 @@ private static final long serialVersionUID = 1704976407311180890L;
 	}
 	
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result
-				+ ((borrowedPublications == null) ? 0 : borrowedPublications.hashCode());
-		result = prime * result
-				+ ((publicationHistory == null) ? 0 : publicationHistory.hashCode());
-		return result;
-	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		LibraryUser other = (LibraryUser) obj;
-		if (borrowedPublications == null) {
-			if (other.borrowedPublications != null)
-				return false;
-		} else if (!borrowedPublications.equals(other.borrowedPublications))
-			return false;
-		if (publicationHistory == null) {
-			if (other.publicationHistory != null)
-				return false;
-		} else if (!publicationHistory.equals(other.publicationHistory))
-			return false;
-		return true;
-	}
+    public boolean equals(Object o) {
 
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        if (!super.equals(o)) return false;
+
+        LibraryUser that = (LibraryUser) o;
+
+        return Objects.equals(publicationHistory, that.publicationHistory) &&
+
+                Objects.equals(borrowedPublications, that.borrowedPublications);
+
+    }
+
+    @Override
+
+    public int hashCode() {
+
+        return Objects.hash(super.hashCode(), publicationHistory, borrowedPublications);
+
+    }
 }

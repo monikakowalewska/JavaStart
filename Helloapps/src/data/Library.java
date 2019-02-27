@@ -1,107 +1,97 @@
 package data;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
+
+import exception.PublicationAlreadyExistsException;
+import exception.UserAlreadyExistsException;
 
 public class Library implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2995794334600947814L;
+	
+	private Map<String, Publication> publications= new HashMap<>();
+	private Map<String, LibraryUser> users= new HashMap<>();
 
-
-	private Map<String, Publication> publications;
-	private Map<String, LibraryUser> users;
-
-	private int publicationsNumber;
-
-
-	public int getPublicationsNumber() {
-		return publications.size();
-	}
 	
 	public Map<String, Publication> getPublications() {
 		return publications;
 	}
+	public Collection<Publication> getSortedPublications(Comparator<Publication> comparator) {
+
+        ArrayList<Publication> list = new ArrayList<>(this.publications.values());
+
+        list.sort(comparator);
+
+        return list;
+
+    }
 	public Map<String, LibraryUser> getUsers() {
 		return users;
 	}
-	public Library() {
-		//ZMIENIONY TYP
-		publications = new HashMap<>();
-		//DODANE
-		users = new HashMap<>();
-	}
+	 public Collection<LibraryUser> getSortedUsers(Comparator<LibraryUser> comparator) {
 
-	public void addBook(Book book) {
-		addPublication(book);
+	        ArrayList<LibraryUser> list = new ArrayList<>(this.users.values());
 
-	}
+	        list.sort(comparator);
 
-	public void addMagazine(Magazine magazine) {
-		addPublication(magazine);
-	}
-	public void addUser(LibraryUser user) {
-		users.put(user.getPesel(), user);
-	}
-	public void removePublication(Publication pub) {
-		if(publications.containsValue(pub)) {
-			publications.remove(pub.getTitle());
-		}
-	}
+	        return list;
 
-	private void addPublication(Publication pub) {
-		publications.put(pub.getTitle(), pub);
-	}
+	    }
+	 public void addUser(LibraryUser user) {
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		for(Publication p: publications.values()) {
-			builder.append(p);
-			builder.append("\n");
-		}
-		return builder.toString();
-	}
-	public static class AlphabeticalComparator implements Comparator<Publication> {
-		@Override
-		public int compare(Publication o1, Publication o2) {
-			if (o1 == null && o2 == null) {
-                return 0;
-            }
-            if (o1 == null) {
-                return 1;
-            }
-            if (o2 == null) {
-                return -1;
-            }
-			return o1.getTitle().compareTo(o2.getTitle());
-		}
-	}
-	
-	public static class DateComparator implements Comparator<Publication> {
-		@Override
-		public int compare(Publication o1, Publication o2) {
-			if (o1 == null && o2 == null) {
-                return 0;
-            }
-            if (o1 == null) {
-                return 1;
-            }
-            if (o2 == null) {
-                return -1;
-            }
-			Integer i1 = o1.getYear();
-			Integer i2 = o2.getYear();
-			return -i1.compareTo(i2);
-		}
-	}
+	        if(users.containsKey(user.getPesel()))
+
+	            throw new UserAlreadyExistsException(
+
+	                    "U¿ytkownik ze wskazanym peselem ju¿ istnieje " + user.getPesel()
+
+	            );
+
+	        users.put(user.getPesel(), user);
+
+	    }
 
 
-	//
 
-	
+	    public void addPublication(Publication publication) {
 
-}
+	        if(publications.containsKey(publication.getTitle()))
+
+	            throw new PublicationAlreadyExistsException(
+
+	                    "Publikacja o takim tytule ju¿ istnieje " + publication.getTitle()
+
+	            );
+
+	        publications.put(publication.getTitle(), publication);
+
+	    }
+	    public Optional<Publication> findPublicationByTitle(String title) {
+
+	        return Optional.ofNullable(publications.get(title));
+
+	    }
+
+
+
+	        public boolean removePublication(Publication publication) {
+
+	            if(publications.containsValue(publication)) {
+
+	                publications.remove(publication.getTitle());
+
+	                return true;
+
+	            } else {
+
+	                return false;
+
+	            }
+
+	        }
+	}
+

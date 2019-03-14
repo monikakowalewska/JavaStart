@@ -16,7 +16,7 @@ public class ConsolePrinter {
 				.peek(this::printLine)
 				.count();
 		if (count == 0)
-			printLine("Brak ksi¹¿ek w bibliotece");
+			printLine("Brak ksiÄ…Å¼ek w bibliotece");
 	}
 
 	public void printMagazines(Collection<Publication> publications) {
@@ -26,7 +26,7 @@ public class ConsolePrinter {
 				.peek(this::printLine)
 				.count();
 		if (count == 0)
-			printLine("Brak magazynów w bibliotece");
+			printLine("Brak magazynï¿½w w bibliotece");
 	}
 
 	public void printUsers(Collection<LibraryUser> users) {

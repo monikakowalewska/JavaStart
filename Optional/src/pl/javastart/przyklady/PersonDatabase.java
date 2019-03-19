@@ -10,8 +10,8 @@ public class PersonDatabase {
 	    public void add(Person person) {
 	        if (person == null)
 	            throw new NullPointerException("Cannot add null reference");
-	        if (findById(person.getId()).isEmpty())
-	            throw new IllegalArgumentException("Object with such id already exists");
+//	        if (findById(person.getId()).isEmpty())
+//	            throw new IllegalArgumentException("Object with such id already exists");
 	        people.add(person);
 	    }
 	    public void add2(Person person) {

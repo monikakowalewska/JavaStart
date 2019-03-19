@@ -24,12 +24,12 @@ public class PersonTest {
 		personOpt2.ifPresentOrElse(
         p -> System.out.println(p.getLastName()), 
         () -> System.out.println("Brak obiektu o wskazanym id"));
-		if(personOpt2.isPresent()) {
-		    System.out.println(personOpt2.get().getLastName());
-		} else {
-		    System.out.println("Brak obiektu o wskazanym id");
-		}
-		db.findById(2).ifPresent(p -> System.out.println(p.getLastName()));
+//		if(personOpt2.isPresent()) {
+//		    System.out.println(personOpt2.get().getLastName());
+//		} else {
+//		    System.out.println("Brak obiektu o wskazanym id");
+//		}
+//		db.findById(2).ifPresent(p -> System.out.println(p.getLastName()));
     }
 
 }

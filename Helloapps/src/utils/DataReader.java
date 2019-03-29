@@ -7,11 +7,12 @@ import data.LibraryUser;
 import data.Magazine;
 
 public class DataReader {
-private Scanner sc;
+	private ConsolePrinter printer;
+	private Scanner sc;
 	
 	public DataReader() {
-		private Scanner sc = new Scanner(System.in);
-		private ConsolePrinter printer;
+		Scanner sc = new Scanner(System.in);
+		ConsolePrinter printer;
 	}
 	public DataReader(ConsolePrinter printer) {
 
@@ -69,7 +70,7 @@ private Scanner sc;
         int day = getInt();
 		return new Magazine(title, publisher, language, year, month, day);
 	}
-	public LibraryUser readAndCreateLibraryUser() {
+	public LibraryUser createLibraryUser() {
 		printer.printLine("Imiê");
         String firstName = sc.nextLine();
         printer.printLine("Nazwisko");

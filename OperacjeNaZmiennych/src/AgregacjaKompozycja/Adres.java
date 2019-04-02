@@ -1,20 +1,13 @@
 package AgregacjaKompozycja;
 
 public class Adres {
-    Person inhabitant;
+
     String street;
     int home;
     int flat;
     String city;
     String zipCode;
 
-    public Person getInhabitant() {
-        return inhabitant;
-    }
-
-    public void setInhabitant(Person inhabitant) {
-        this.inhabitant = inhabitant;
-    }
 
     public String getStreet() {
         return street;
@@ -55,9 +48,9 @@ public class Adres {
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
-    public Adres(Adres adres1){}
-    public Adres(Person inhabitant,String street,int home,int flat,String city,String zipCode){
-        this.inhabitant=inhabitant;
+    public Adres(){}
+    public Adres(String street,int home,int flat,String city,String zipCode){
+
         this.street=street;
         this.home=home;
         this.flat=flat;
@@ -68,7 +61,6 @@ public class Adres {
     @Override
     public String toString() {
         return "Adres{" +
-                "mieszkaniec=" + inhabitant +
                 ", ulica='" + street + '\'' +
                 ", numer domu=" + home +
                 ", numer mieszkania=" + flat +

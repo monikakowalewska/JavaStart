@@ -4,6 +4,8 @@ public class Person {
     String firstName;
     String lastName;
     String pesel;
+    Adres adres;
+    Adres registeredAdres;
 
     public String getFirstName() {
         return firstName;
@@ -28,6 +30,23 @@ public class Person {
     public void setPesel(String pesel) {
         this.pesel = pesel;
     }
+
+    public Adres getAdres() {
+        return adres;
+    }
+
+    public void setAdres(Adres adres) {
+        this.adres = adres;
+    }
+
+    public Adres getRegisteredAdres() {
+        return registeredAdres;
+    }
+
+    public void setRegisteredAdres(Adres registeredAdres) {
+        this.registeredAdres = registeredAdres;
+    }
+
     public Person(){}
     public Person(String firstName,String lastName,String pesel){
         this.firstName=firstName;

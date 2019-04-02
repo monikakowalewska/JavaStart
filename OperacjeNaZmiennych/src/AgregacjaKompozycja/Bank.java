@@ -8,8 +8,7 @@ public class Bank {
         account1.balance = 10_000;
         Adres adres1=new Adres(person1,"Czerniakowska",34,156,
                 "Warszawa","02-333");
-        Adres registeredAdres1=new Adres(person1,"Czerniakowska",34,156,
-                "Warszawa","02-333");
+        Adres registeredAdres1=adres1;
         Credit credit1 = new Credit(person1,2000,0,0.05,12);
         System.out.println(person1+"posiada konto bankowe z kwot¹: " + account1.balance+
                 "oraz kredyt na kwotê: " + credit1.cashBorrowed);

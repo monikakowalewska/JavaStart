@@ -55,7 +55,7 @@ public class Adres {
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
-    public Adres(){}
+    public Adres(Adres adres1){}
     public Adres(Person inhabitant,String street,int home,int flat,String city,String zipCode){
         this.inhabitant=inhabitant;
         this.street=street;

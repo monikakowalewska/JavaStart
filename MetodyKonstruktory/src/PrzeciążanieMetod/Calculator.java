@@ -8,8 +8,7 @@ public class Calculator {
         return a+b;
     }
     double add(double a,double b, double c){
-        double result=a+b+c;
-        return result;
+        return add(a, b) + c;
     }
     int subtract(int a, int b){
         return a-b;

@@ -35,6 +35,18 @@ public class Client {
         this.premium = premium;
 
     }
+    public String printClient(){
+        String result;
+        if(firstName!=null&&lastName!=null)
+           result="Witaj "+firstName+" "+lastName;
+        else if(lastName==null&&firstName==null)
+            result="Witaj nieznajomy";
+        else if(firstName==null)
+            result="Dzieñ dobry pani/panie "+lastName;
+        else
+            result="Witaj "+firstName;
 
+        return result;
+    }
 
 }

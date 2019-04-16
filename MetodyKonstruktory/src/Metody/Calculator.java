@@ -14,4 +14,3 @@ public class Calculator {
         return a/b;
     }
 }
-//    add(), subtract(), multiply(), divide()

@@ -1,7 +1,8 @@
 package Data;
 
 public class Student {
-    public static int licznik=0;
+
+    private static int licznik=0;
     private String firstName;
     private String lastName;
     private String index;
@@ -28,6 +29,13 @@ public class Student {
 
     public void setIndex(String index) {
         this.index = index;
+    }
+    public static int getLicznik() {
+        return licznik;
+    }
+
+    public static void setLicznik(int licznik) {
+        Student.licznik = licznik;
     }
     public Student(){};
     public Student(String firstName,String lastName,String index){

@@ -35,9 +35,10 @@ public class DebugExample {
     }
 
     private static void multiplyAllNumbersBy(int[] array, int multiplier) {
-        for (int number : array) {
-            number = number * multiplier;
+        for (int i = 0; i < array.length; i++) {
+            array[i] = array[i] * multiplier;
         }
+
     }
 
     private static void printArray(int[] numbers) {

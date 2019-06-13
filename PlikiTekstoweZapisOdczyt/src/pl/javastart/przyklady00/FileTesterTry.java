@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class FileTesterTry {
 	public static void main(String[] args) {
-        String fileName = "testFile.txt";
+        String fileName = "C:\\Users\\Monika\\IdeaProjects\\JavaStart\\PlikiTekstoweZapisOdczyt\\testFile.txt";
         //Deklaracja i inicjalizacja obiektów 
         try (
             FileReader fileReader = new FileReader(fileName);

@@ -14,9 +14,10 @@ public class Nurse extends Person{
 		super(imie, nazwisko, wyplata);
 		this.setNadgodziny(nadgodziny);
 	}
+
 	@Override
 	public String toString() {
-		return super.toString()+" "+nadgodziny+" ";
+		return super.toString() + " " + nadgodziny + " ";
 	}
 
 

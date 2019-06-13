@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class FileWriterTest {
 	public static void main(String[] args) {
-        String fileName = "testFile.txt";
+        String fileName = "C:\\Users\\Monika\\IdeaProjects\\JavaStart\\PlikiTekstoweZapisOdczyt\\testFile.txt";
         try(
             FileWriter fileWriter = new FileWriter(fileName,true);
             BufferedWriter writer = new BufferedWriter(fileWriter);

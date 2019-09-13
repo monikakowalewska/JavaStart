@@ -8,7 +8,7 @@ import java.math.BigInteger;
 
 public class NumbersReader {//rozwi¹zanie zadania wg JavaStart
 	public static void main(String[] args) {
-		String fileName = "numbers.txt";
+		String fileName = "C:\\Users\\Monika\\IdeaProjects\\JavaStart\\TypyOpakowujace\\numbers.txt";
 		int a=0, b=0, c = 0;
 		BigInteger aBig = null, bBig = null;
 		
